@@ -4,14 +4,10 @@
 CC = gcc
 
 # Compiler flags
-CFLAGS = -Wall
+CFLAGS = -Wall -I/usr/include/tirpc
 
 # Libraries
-LIBS = -lnsl
-
-# For systems using tirpc instead of nsl
-# CFLAGS = -Wall -I/usr/include/tirpc
-# LIBS = -ltirpc
+LIBS = -ltirpc
 
 # Targets
 all: hello_server hello_client
@@ -21,12 +17,12 @@ rpcgen: hello.x
 	rpcgen hello.x
 
 # Build server
-hello_server: hello_server.c hello_svc.c hello_xdr.c hello.h
-	$(CC) $(CFLAGS) -o hello_server hello_server.c hello_svc.c hello_xdr.c $(LIBS)
+hello_server: hello_server.c hello_svc.c hello.h
+	$(CC) $(CFLAGS) -o hello_server hello_server.c hello_svc.c $(LIBS)
 
 # Build client
-hello_client: hello_client.c hello_clnt.c hello_xdr.c hello.h
-	$(CC) $(CFLAGS) -o hello_client hello_client.c hello_clnt.c hello_xdr.c $(LIBS)
+hello_client: hello_client.c hello_clnt.c hello.h
+	$(CC) $(CFLAGS) -o hello_client hello_client.c hello_clnt.c $(LIBS)
 
 # Clean generated files
 clean:
