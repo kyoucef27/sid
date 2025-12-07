@@ -24,14 +24,14 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    /* Request two integers from user */
+   
     printf("Enter first integer: ");
     scanf("%d", &ops.a);
     
     printf("Enter second integer: ");
     scanf("%d", &ops.b);
 
-    /* Request operation */
+
     printf("\nSelect operation:\n");
     printf("1. Addition (+)\n");
     printf("2. Subtraction (-)\n");
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     printf("Enter your choice (1-4): ");
     scanf("%d", &operation);
 
-    /* Call appropriate remote procedure */
+
     switch(operation) {
         case 1:
             result = add_1(&ops, clnt);
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
             break;
     }
 
-    /* Clean up */
+
     clnt_destroy(clnt);
     return 0;
 }

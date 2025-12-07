@@ -1,0 +1,29 @@
+module MatrixOpsApp {
+    // Matrix type: sequence of sequences of doubles
+    typedef sequence<double> Row;
+    typedef sequence<Row> Matrix;
+    
+    // Exceptions
+    exception IncompatibleDimensions {
+        string reason;
+    };
+    
+    exception InvalidMatrix {
+        string reason;
+    };
+    
+    // MatrixOps interface
+    interface MatrixOps {
+        // Add two matrices
+        Matrix add(in Matrix m1, in Matrix m2) raises (IncompatibleDimensions, InvalidMatrix);
+        
+        // Multiply two matrices
+        Matrix multiply(in Matrix m1, in Matrix m2) raises (IncompatibleDimensions, InvalidMatrix);
+        
+        // Transpose a matrix
+        Matrix transpose(in Matrix m) raises (InvalidMatrix);
+        
+        // Calculate trace of a matrix (sum of diagonal elements)
+        double trace(in Matrix m) raises (InvalidMatrix);
+    };
+};

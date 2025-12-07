@@ -1,0 +1,36 @@
+module AddressBookApp {
+    // Contact structure
+    struct Contact {
+        string name;
+        string phone;
+        string email;
+    };
+    
+    // Sequence of contacts
+    typedef sequence<Contact> ContactList;
+    
+    // Exception for contact not found
+    exception ContactNotFound {
+        string reason;
+    };
+    
+    // Exception for duplicate contact
+    exception DuplicateContact {
+        string reason;
+    };
+    
+    // AddressBook interface
+    interface AddressBook {
+        // Add a new contact
+        void addContact(in Contact contact) raises (DuplicateContact);
+        
+        // Remove a contact by name
+        void removeContact(in string name) raises (ContactNotFound);
+        
+        // Get a contact by name
+        Contact getContact(in string name) raises (ContactNotFound);
+        
+        // List all contacts
+        ContactList listContacts();
+    };
+};

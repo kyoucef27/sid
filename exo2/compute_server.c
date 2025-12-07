@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Addition implementation */
+
 int *add_1_svc(operands *argp, struct svc_req *rqstp)
 {
     static int result;
@@ -13,7 +13,6 @@ int *add_1_svc(operands *argp, struct svc_req *rqstp)
     return &result;
 }
 
-/* Subtraction implementation */
 int *sub_1_svc(operands *argp, struct svc_req *rqstp)
 {
     static int result;
@@ -24,7 +23,7 @@ int *sub_1_svc(operands *argp, struct svc_req *rqstp)
     return &result;
 }
 
-/* Multiplication implementation */
+
 int *mul_1_svc(operands *argp, struct svc_req *rqstp)
 {
     static int result;
@@ -35,14 +34,12 @@ int *mul_1_svc(operands *argp, struct svc_req *rqstp)
     return &result;
 }
 
-/* Division implementation with zero check */
 int *div_1_svc(operands *argp, struct svc_req *rqstp)
 {
     static int result;
     
     if (argp->b == 0) {
-        printf("Server: DIV(%d, %d) - Error: Division by zero!\n", argp->a, argp->b);
-        result = 0;  /* Return 0 for division by zero */
+-        printf("S-.....................................................................................................................................................................................................................................................................................................................................................................................................................................................-ö-----------e-r-ver::;
     } else {
         result = argp->a / argp->b;
         printf("Server: DIV(%d, %d) = %d\n", argp->a, argp->b, result);
